@@ -1,0 +1,19 @@
+import { NavigationContainer } from "@react-navigation/native";
+import { createStackNavigator } from "@react-navigation/stack";
+import Timeline from "./screens/Timeline";
+
+const Stack = createStackNavigator();
+
+const AppNavigator = () => (
+  <Stack.Navigator>
+    <Stack.Screen name="Timeline" component={Timeline} />
+  </Stack.Navigator>
+);
+
+const NavContainer = () => (
+  <NavigationContainer>
+    <AppNavigator />
+  </NavigationContainer>
+);
+
+export default NavContainer;
