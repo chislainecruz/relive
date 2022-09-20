@@ -1,15 +1,32 @@
-import React from "react";
-import { View, Text, Button } from "react-native";
+import React, { useState, useEffect } from "react";
+import { View, FlatList, TouchableOpacity } from "react-native";
+import PostCell from "../components/PostCell";
+import { getAllPosts } from "../hooks/apiRequest/Posts";
 
-function Timeline() {
+const Timeline = ({ navigation }) => {
   console.log("The timeline is rendering");
+  const [posts, setPosts] = useState([]);
 
+  useEffect(() => {
+    getAllPosts().then((posts) => {
+      setPosts(posts);
+    });
+  }, []);
+
+  const renderItem = ({ item }) => {
+    return (
+      <TouchableOpacity
+        onPress={() => navigation.navigate("PostView", { post: item })}
+      >
+        <PostCell post={item} />
+      </TouchableOpacity>
+    );
+  };
   return (
-    <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-      <Text>This is the timeline</Text>
-      <Button title="Press me!" />
+    <View>
+      {!!posts?.length && <FlatList data={posts} renderItem={renderItem} />}
     </View>
   );
-}
+};
 
 export default Timeline;

@@ -11,6 +11,12 @@ npm-debug.*
 *.mobileprovision
 *.orig.*
 web-build/
+_replicator/
+_users/
+config.json
+log.txt
+pouch__all_dbs__/
+relive/*
 
 # macOS
 .DS_Store
