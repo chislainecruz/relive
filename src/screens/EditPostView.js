@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { View } from "react-native";
-import Post from "../components/Post";
+import PostForm from "../components/PostForm";
 import { getPost } from "../hooks/apiRequest/PostsHooks";
 
-const PostView = ({ route }) => {
+const EditPostView = ({ route, navigation }) => {
   const { postId } = route.params;
   const [post, setPost] = useState({});
 
@@ -11,9 +11,11 @@ const PostView = ({ route }) => {
     getPost(postId).then((post) => {
       setPost(post);
     });
-  }, []);
+  }, [postId]);
 
-  return <View>{post._id && <Post doc={post} />}</View>;
+  return (
+    <View>{post._id && <PostForm post={post} navigation={navigation} />}</View>
+  );
 };
 
-export default PostView;
+export default EditPostView;
