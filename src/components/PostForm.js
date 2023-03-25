@@ -4,6 +4,7 @@ import * as ImagePicker from "expo-image-picker";
 import Tags from "./Tags";
 import SaveHeader from "../components/SaveHeader";
 import { updatePost } from "../hooks/apiRequest/PostsHooks";
+import styles from "../stylesheets/styles";
 
 const PostForm = (props) => {
   const post = props.post;
@@ -44,7 +45,7 @@ const PostForm = (props) => {
   };
 
   const editTags = () => {
-    console.log("editiing tags");
+    console.log("editing tags");
   };
 
   return (
@@ -53,7 +54,7 @@ const PostForm = (props) => {
       <Text>{post.prompt}</Text>
       <TextInput
         multiline
-        numberOfLines={5}
+        numberOfLines={10}
         onChangeText={setText}
         value={text}
       />
@@ -66,7 +67,9 @@ const PostForm = (props) => {
         }}
       >
         <Button title="+" onPress={editTags}></Button>
-        <Tags tags={tags} />
+        <View style={styles.postTags}>
+          <Tags tags={tags} />
+        </View>
       </View>
       <Button title="Photo" onPress={pickImage} />
       {hasImage && (

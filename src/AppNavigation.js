@@ -17,7 +17,7 @@ const AppNavigator = () => (
           title: "Relive",
           headerTitleAlign: "left",
           headerStyle: {
-            backgroundColor: "#f4511e",
+            // backgroundColor: "#f4511e",
           },
           headerTitleStyle: {
             fontWeight: "bold",

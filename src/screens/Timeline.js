@@ -3,6 +3,7 @@ import { View, FlatList, TouchableOpacity } from "react-native";
 import PostCell from "../components/PostCell";
 import { getAllPosts } from "../hooks/apiRequest/PostsHooks";
 import { useGlobalState } from "../state/state";
+import styles from "../stylesheets/styles";
 
 const Timeline = ({ navigation }) => {
   console.log("The timeline is rendering");
@@ -28,7 +29,7 @@ const Timeline = ({ navigation }) => {
     );
   };
   return (
-    <View>
+    <View style={styles.container}>
       {!!posts?.length && <FlatList data={posts} renderItem={renderItem} />}
     </View>
   );
